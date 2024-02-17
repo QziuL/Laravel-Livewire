@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Tweet;
 use Livewire\Component;
 
 class ShowTweets extends Component
@@ -11,6 +12,8 @@ class ShowTweets extends Component
 
     public function render()
     {
-        return view('livewire.show-tweets');
+        $tweets = Tweet::all();
+        
+        return view('livewire.show-tweets', compact('tweets'));
     }
 }
