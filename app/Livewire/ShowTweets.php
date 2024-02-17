@@ -3,17 +3,33 @@
 namespace App\Livewire;
 
 use App\Models\Tweet;
+use Illuminate\Http\Request;
 use Livewire\Component;
 
 class ShowTweets extends Component
 {
 
-    public $message = "TESTE DE MESSAGEM";
+    public $content = "TESTE DE MESSAGEM";
+    protected $rules = [
+        'content' => 'required|min:3|max:255',
+    ];
 
     public function render()
     {
         $tweets = Tweet::all();
         
         return view('livewire.show-tweets', compact('tweets'));
+    }
+
+    public function create()
+    {
+        $this->validate();
+        
+        Tweet::create([
+            'user_id' => 1,
+            'content' => $this->content,
+        ]);
+
+        $this->content = '';
     }
 }
