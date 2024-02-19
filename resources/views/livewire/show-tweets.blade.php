@@ -24,4 +24,9 @@
     @foreach ($tweets as $tweet)
         <p>{{ $tweet->user->name }} -- {{ $tweet->content }}</p>
     @endforeach
+
+    <br>
+    <hr>
+
+    {{ $tweets->links() }}
 </div>
