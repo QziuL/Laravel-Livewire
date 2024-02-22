@@ -27,6 +27,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile_photo_path',
     ];
 
     /**
@@ -58,6 +59,11 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function getPhotoAttribute()
+    {
+        return $this->profile_photo_path;
+    }
 
     public function tweets()
     {

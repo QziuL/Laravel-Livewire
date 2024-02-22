@@ -1,4 +1,4 @@
-<div style="background-color: whitesmoke; width: 28%; margin: auto; text-align: center; padding: 5px; border-radius: 8px;">
+<div style="background-color: whitesmoke; width: 100%; margin: auto; text-align: center; padding: 5px; border-radius: 8px;">
     <h1>Component Show Tweets</h1>
 
     {{ $content }}
@@ -22,14 +22,24 @@
 
     <h2>Tweets</h2>
     @foreach ($tweets as $tweet)
-        <p>
-            {{ $tweet->user->name }} -- {{ $tweet->content }} 
-            @if ($tweet->likes->count() > 0)
-                <a href="#" wire:click.prevent="unlike({{ $tweet->id }})">Descurtir</a>
-            @else
-                <a href="#" wire:click.prevent="like({{ $tweet->id }})">Curtir</a>
-            @endif
-        </p>
+        <div class="flex">
+            <div class="w-1/8">
+                @if ($tweet->user->photo)
+                    <img src="{{ url("storage/{$tweet->user->photo}") }}" alt="image user {{ $tweet->user->name }}" class="rounded-full h-8 w-8">
+                @else
+                    <img src="{{ url('img/user-no-image.png') }}" alt="no image user {{ $tweet->user->name }}" class="rounded-full h-8 w-8">
+                @endif
+                {{ $tweet->user->name }}
+            </div>
+            <div class="w-7/8">
+                {{ $tweet->content }} 
+                @if ($tweet->likes->count() > 0)
+                    <a href="#" wire:click.prevent="unlike({{ $tweet->id }})">Descurtir</a>
+                @else
+                    <a href="#" wire:click.prevent="like({{ $tweet->id }})">Curtir</a>
+                @endif
+            </div>
+        </div>
     @endforeach
 
     <br>
