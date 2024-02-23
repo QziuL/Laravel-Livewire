@@ -1,15 +1,23 @@
 <div>
-    <h1>Foto de perfil</h1>
+    <h1 class="text-4xl py-6 font-bold">Atualizar foto de perfil</h1>
 
-    <form method="post" wire:submit.prevent="savePhoto">
-        <input type="file" name="photo" id="photo" wire:model="photo">
+    <form method="post" wire:submit.prevent="savePhoto" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-8 m-8">
+        @if ($photo)
+            <div class="mb-4">
+                <img src="{{ $photo->temporaryUrl() }}" style="max-width: 200px;">
+            </div>
+        @endif
+
+        <div class="mb-4">
+            <input type="file" wire:model="photo">
+        </div>
+        
         @error('photo')
-            <span style="background-color: rgb(255, 0, 0); colrgb(0, 0, 0)hite;">
-                {{ $message }}
-            </span>
+            <p>
+                <span class="text-red-500">{{ $message }}</span>
+            </p>
         @enderror
-        <br>
-        <br>
-        <button type="submit">Enviar</button>
+
+        <button type="submit" class="bg-blue-900 text-white p-2 pl-6 pr-6 rounded">Enviar</button>
     </form>
 </div>

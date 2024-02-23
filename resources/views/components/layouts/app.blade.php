@@ -10,7 +10,7 @@
     @livewireStyles
 </head>
 <body class="font-sans antialiased bg-gray-100">
-    <div class="container mx-auto h-200">
+    <div class="container mx-auto w-3/6 h-200">
         <main>
             {{ $slot }} <!-- RENDER LIVEWIRE COMPONENTS -->
         </main>
