@@ -1,11 +1,11 @@
-<div style="background-color: whitesmoke; width: 100%; margin: auto; text-align: center; padding: 5px; border-radius: 8px;">
-    <h1>Component Show Tweets</h1>
+<div>
+    <h1  class="text-2xl py-6 font-bold h-24">Tweets</h1>
+    <a href="{{ route('upload.photo') }}">Alterar foto</a>
 
-    {{ $content }}
     <br>
     <br>
 
-    <div style="background-color: rgb(48, 140, 177); padding: 10px; width: 70%; margin:auto; border-radius: 10px;">
+    <div>
         <form method="post" wire:submit.prevent="create">
             @csrf
             <input type="text" name="content" id="content" wire:model="content">
@@ -22,16 +22,16 @@
 
     <h2>Tweets</h2>
     @foreach ($tweets as $tweet)
-        <div class="flex">
-            <div class="w-1/8">
+        <div class="flex m-8 bg-white shadow-md rounded p-4">
+            <div class="w-1/8 pl-3 text-center">
                 @if ($tweet->user->photo)
                     <img src="{{ url("storage/{$tweet->user->photo}") }}" alt="image user {{ $tweet->user->name }}" class="rounded-full h-8 w-8">
                 @else
                     <img src="{{ url('img/user-no-image.png') }}" alt="no image user {{ $tweet->user->name }}" class="rounded-full h-8 w-8">
                 @endif
-                {{ $tweet->user->name }}
+                <span>{{ $tweet->user->name }}</span>
             </div>
-            <div class="w-7/8">
+            <div>
                 {{ $tweet->content }} 
                 @if ($tweet->likes->count() > 0)
                     <a href="#" wire:click.prevent="unlike({{ $tweet->id }})">Descurtir</a>
