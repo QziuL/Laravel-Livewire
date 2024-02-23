@@ -1,5 +1,5 @@
 <div>
-    <h1  class="text-2xl py-6 font-bold h-24 inline-block">Tweets</h1>
+    <h1  class="text-4xl py-6 font-bold h-24 inline-block">Tweets</h1>
     <a href="{{ route('upload.photo') }}" class="bg-cyan-400 text-white p-2 rounded">Alterar foto</a>
 
     <form method="post" wire:submit.prevent="create" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-8 mt-8">

@@ -1,7 +1,7 @@
 <div>
     <h1 class="text-4xl py-6 font-bold">Atualizar foto de perfil</h1>
 
-    <form method="post" wire:submit.prevent="savePhoto" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-8 m-8">
+    <form method="post" wire:submit.prevent="savePhoto" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-8 mt-8">
         @if ($photo)
             <div class="mb-4">
                 <img src="{{ $photo->temporaryUrl() }}" style="max-width: 200px;">
